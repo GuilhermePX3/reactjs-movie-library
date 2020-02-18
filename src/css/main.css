@@ -1,0 +1,12 @@
+#content {
+    align-self: center;    
+}
+
+h2, h3, a, input {
+    font-family: 'Abel', sans-serif;
+}
+
+h6 {
+    font-family: 'Abel', sans-serif;
+    color: #ffae00;
+}
