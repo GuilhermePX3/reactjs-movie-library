@@ -3,6 +3,10 @@ import React from 'react'
 import './css/main.css'
 import './css/fonts.css'
 import './css/header.css'
+
+/**semantic.less permite moficar cores padrões do semantic ui - theme.config*/
+
+import 'semantic-ui-less/semantic.less'
 //----
 
 import "pure-react-carousel/dist/react-carousel.es.css"
@@ -23,12 +27,184 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            moviesArray:[]
+            moviesArray:[],
+            moviesSearchArray:[{Response:'False'}],
+
+            addBtnColor:'#44444420',
+            blur:0,
+
+            activeLoginPanel:false,
+            activeSearchPanel:false,
+
+            searchText:'none',
         } 
     } 
 
     componentDidMount(){
+        
+    }
 
+    //Função para ativar overlay panels
+
+    _handleLogin_Panel(activate){
+        this.setState({activeLoginPanel: activate, blur: activate ? 5 : 0})
+    }
+
+    _handleAdd_Panel(activate){        
+        this.setState({activeSearchPanel: activate, blur: activate ? 5 : 0})
+    }
+
+    //Button handles
+
+    _handleAddButton(pressed){
+        this.setState({addBtnColor: pressed ? '#44444450' : '#44444420'})
+    }
+
+    _handleSearchText(event){
+        this.setState({typed: event.target.value});
+    }
+
+    //Overlay panels
+
+    _loginPanel(){
+        /** Painel sobreposto para login e registro */
+
+        if(this.state.activeLoginPanel){
+            return (
+                <div id="dialogBackground">
+                    <div id="loginPanel">
+
+                        <h1 id="title">LOGIN</h1>
+                                                            
+                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                            <input type="username" placeholder="Login"/>
+                            <i style={{marginLeft:'10px'}} class="user link icon"></i>
+                        </div>
+                        
+                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                            <input type="password" placeholder="Password"/>
+                            <i style={{marginLeft:'10px'}} class="lock link icon"></i>
+                        </div>
+
+                        <div>
+                            <button id="orangeButton" class="ui inverted yellow button">Login</button>
+                        </div>
+
+                        <h1 id="title">REGISTER</h1>
+                                                            
+                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                            <input type="username" placeholder="Login"/>
+                            <i style={{marginLeft:'10px'}} class="user link icon"></i>
+                        </div>
+                        
+                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                            <input type="password" placeholder="Password"/>
+                            <i style={{marginLeft:'10px'}} class="lock link icon"></i>
+                        </div>
+
+                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                            <input type="password" placeholder="Confirm Password"/>
+                            <i style={{marginLeft:'10px'}} class="lock link icon"></i>
+                        </div>
+
+                        <div>
+                            <button class="ui inverted yellow button">Register!</button>
+                            <button class="ui inverted button" onClick={() => this._handleLogin_Panel(false)}>Maybe Later</button>
+                        </div>
+
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    _movieSearchPanel(){
+        /** Painel sobreposto para busca e adição de filmes */
+        if(this.state.activeSearchPanel){
+            return (
+                <div id="dialogBackground">
+                    <div id="loginPanel">
+
+                        <h1 id="title">ADD MOVIE</h1>
+                        <h7 id="title">Here you can add movies to your list! Try to search by its title.</h7>
+                                                            
+                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                            <input type="text" placeholder="Movie..." onChange={txt => this.setState({searchText:txt.target.value})}/>
+                            <i style={{marginLeft:'10px'}} class="search link icon"></i>
+                        </div>      
+
+                         <div>
+                            <button class="ui inverted yellow button" onClick={() => this._searchTool()}>Search</button>
+                            <button class="ui inverted button" onClick={() => this._addResultToArray()}>Add</button>
+                        </div>
+
+                        
+                       
+                            {
+                            this.state.moviesSearchArray.map((item, index) => {
+                                if(this.state.moviesSearchArray[0].Response == 'True'){
+                                    return(
+                                        <div style={{width:'100%', height:'100%', backgroundColor:'#222', margin:"20px", borderRadius:'5px', padding:'15px'}}>
+                                            <div style={{display:'flex', flexDirection:'row'}}>
+                                                <div>
+                                                    <div style={{height:'100px', width:'70px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${item.Poster})`, backgroundSize:'cover'}}/>
+                                                </div>
+
+                                                <div>
+                                                    <p style={{fontSize:15, margin:0, color:'#fff'}}>{item.Title}</p>
+                                                    <p style={{fontSize:12, margin:0, color:'#fff'}}>{item.imdbRating}</p>
+                                                    <p style={{fontSize:12, margin:0, color:'#fff'}}>{item.Actors}</p>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        
+                                    )
+                                }else{
+                                    return(
+                                        <div style={{width:'100%', height:'100%', margin:"20px", padding:'15px'}}>
+                                            <div style={{display:'flex', flexDirection:'row'}}>
+                                                    <p style={{fontSize:12, margin:0, color:'#fff'}}>No results found</p>
+                                            </div>
+                                        </div>
+                                        
+                                    )
+                                }
+                            })
+                            }
+
+                             
+
+                        <button class="ui inverted button" onClick={() => this._handleAdd_Panel(false)}>Voltar</button>         
+
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    //Overlay panels - Funcoes
+
+    _searchTool(){
+        const getMovies = async () => {
+            const result = await fetch(`http://www.omdbapi.com/?apikey=c7002bae&t=${this.state.searchText}&plot=short`)
+            const jsonArray = [];
+
+            jsonArray.push(await result.json())
+
+            console.log(this.state.moviesSearchArray.Response)
+           
+            this.setState({moviesSearchArray:jsonArray})
+        }
+
+        getMovies();
+    }
+
+    _addResultToArray(){        
+        const newJson = this.state.moviesArray;
+
+        newJson.push(this.state.moviesSearchArray[0]);
+
+        this.setState({moviesArray:newJson, moviesSearchArray:[{Response:'False'}]})
     }
 
     render() {
@@ -54,7 +230,7 @@ class App extends React.Component {
                                     <i class="search link icon"></i>
                                 </div>
                             </div>
-                            <a class="ui item">
+                            <a class="ui item" onClick={() => this._handleLogin_Panel(true)}>
                             Log In
                             </a>
                         </div>
@@ -63,7 +239,8 @@ class App extends React.Component {
 
                 {/** PAGE CONTENT - SEMANTIC UI */}
                 <div style={{padding:'10px'}}>
-                    <div id="mainPage">
+
+                    <div id="mainPage" style={{filter:`blur(${this.state.blur}px)`}}>
 
                         <div style={{padding:20}}>
                             <h2>New Releases</h2>
@@ -75,15 +252,13 @@ class App extends React.Component {
                                 {
                                     arr.map((item, index) => {
                                         return(
-                                            <div style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${movies[index].Poster})`, backgroundSize:'cover'}}>
-                                                
-                                            </div>
+                                            <div style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${movies[index].Poster})`, backgroundSize:'cover'}}/>
                                         )
                                     })
                                 }
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
 
                         <div style={{padding:20}}>
                             <h2>Highlights</h2>
@@ -99,7 +274,7 @@ class App extends React.Component {
                                 </div>
                                 <div class="five wide column">
                                     <div>
-                                        <h3>{movies[3].Title}</h3>
+                                        <h3>{movies[3].Title.toUpperCase()}</h3>
                                         <h5>{movies[3].Genre}</h5>
                                         <h4>{movies[3].Plot}</h4> 
                                     </div>
@@ -112,7 +287,7 @@ class App extends React.Component {
                                 </div>
                                 <div class="five wide column">
                                     <div>
-                                        <h3>{movies[4].Title}</h3>
+                                        <h3>{movies[4].Title.toUpperCase()}</h3>
                                         <h5>{movies[4].Genre}</h5>
                                         <h4>{movies[4].Plot}</h4> 
                                     </div>
@@ -130,19 +305,17 @@ class App extends React.Component {
 
                                 <div style={{display:'flex', overflowX:'scroll', padding:15, margin:10, height:'260px'}}>
 
-                                    <div style={{height:'100%', minWidth:'150px', backgroundColor:'#44444420', borderRadius:'5px', marginRight:10}}>
+                                    <div style={{height:'100%', minWidth:'150px', backgroundColor:this.state.addBtnColor, borderRadius:'5px', marginRight:10}} onPointerDown={() => {this._handleAddButton(true); this._handleAdd_Panel(true)}} onPointerUp={e => this._handleAddButton(false)}>
                                         <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100%', flexDirection:'column'}}>
                                             <img style={{height:'80px'}} src={require('./img/add_icon.png')}></img>
-                                            <h4>Adicionar</h4>
+                                            <h4>Add</h4>
                                         </div>
                                     </div>
 
                                     {
-                                    arr.map((item, index) => {
+                                    this.state.moviesArray.map((item, index) => {
                                         return(
-                                            <div style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${movies[index].Poster})`, backgroundSize:'cover'}}>
-                                                
-                                            </div>
+                                            <div style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${this.state.moviesArray[index].Poster})`, backgroundSize:'cover'}}/>
                                         )
                                     })
                                     }
@@ -155,9 +328,12 @@ class App extends React.Component {
                     </div>
                 
                 </div>
+
+
+                {this._loginPanel()}               
+                {this._movieSearchPanel()}               
+
                 
-
-
             </div>
                 
         )
