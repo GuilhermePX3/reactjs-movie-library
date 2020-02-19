@@ -76,40 +76,40 @@ class App extends React.Component {
 
                         <h1 id="title">LOGIN</h1>
                                                             
-                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                        <div className="ui inverted transparent left icon  input" id="loginInput">
                             <input type="username" placeholder="Login"/>
-                            <i style={{marginLeft:'10px'}} class="user link icon"></i>
+                            <i style={{marginLeft:'10px'}} className="user link icon"></i>
                         </div>
                         
-                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                        <div className="ui inverted transparent left icon  input" id="loginInput">
                             <input type="password" placeholder="Password"/>
-                            <i style={{marginLeft:'10px'}} class="lock link icon"></i>
+                            <i style={{marginLeft:'10px'}} className="lock link icon"></i>
                         </div>
 
                         <div>
-                            <button id="orangeButton" class="ui inverted yellow button">Login</button>
+                            <button id="orangeButton" className="ui inverted yellow button">Login</button>
                         </div>
 
                         <h1 id="title">REGISTER</h1>
                                                             
-                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                        <div className="ui inverted transparent left icon  input" id="loginInput">
                             <input type="username" placeholder="Login"/>
-                            <i style={{marginLeft:'10px'}} class="user link icon"></i>
+                            <i style={{marginLeft:'10px'}} className="user link icon"></i>
                         </div>
                         
-                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                        <div className="ui inverted transparent left icon  input" id="loginInput">
                             <input type="password" placeholder="Password"/>
-                            <i style={{marginLeft:'10px'}} class="lock link icon"></i>
+                            <i style={{marginLeft:'10px'}} className="lock link icon"></i>
                         </div>
 
-                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                        <div className="ui inverted transparent left icon  input" id="loginInput">
                             <input type="password" placeholder="Confirm Password"/>
-                            <i style={{marginLeft:'10px'}} class="lock link icon"></i>
+                            <i style={{marginLeft:'10px'}} className="lock link icon"></i>
                         </div>
 
                         <div>
-                            <button class="ui inverted yellow button">Register!</button>
-                            <button class="ui inverted button" onClick={() => this._handleLogin_Panel(false)}>Maybe Later</button>
+                            <button className="ui inverted yellow button">Register!</button>
+                            <button className="ui inverted button" onClick={() => this._handleLogin_Panel(false)}>Maybe Later</button>
                         </div>
 
                     </div>
@@ -126,23 +126,23 @@ class App extends React.Component {
                     <div id="loginPanel">
 
                         <h1 id="title">ADD MOVIE</h1>
-                        <h7 id="title">Here you can add movies to your list! Try to search by its title.</h7>
+                        <h6 id="title">Here you can add movies to your list! Try to search by its title.</h6>
                                                             
-                        <div class="ui inverted transparent left icon  input" id="loginInput">
+                        <div className="ui inverted transparent left icon  input" id="loginInput">
                             <input type="text" placeholder="Movie..." onChange={txt => this.setState({searchText:txt.target.value})}/>
-                            <i style={{marginLeft:'10px'}} class="search link icon"></i>
+                            <i style={{marginLeft:'10px'}} className="search link icon"></i>
                         </div>      
 
                          <div>
-                            <button class="ui inverted yellow button" onClick={() => this._searchTool()}>Search</button>
-                            <button class="ui inverted button" onClick={() => this._addResultToArray()}>Add</button>
+                            <button className="ui inverted yellow button" onClick={() => this._searchTool()}>Search</button>
+                            <button className="ui inverted button" onClick={() => this._addResultToArray()}>Add</button>
                         </div>
 
                         
                        
                             {
                             this.state.moviesSearchArray.map((item, index) => {
-                                if(this.state.moviesSearchArray[0].Response == 'True'){
+                                if(this.state.moviesSearchArray[0].Response === 'True'){
                                     return(
                                         <div style={{width:'100%', height:'100%', backgroundColor:'#222', margin:"20px", borderRadius:'5px', padding:'15px'}}>
                                             <div style={{display:'flex', flexDirection:'row'}}>
@@ -174,7 +174,7 @@ class App extends React.Component {
 
                              
 
-                        <button class="ui inverted button" onClick={() => this._handleAdd_Panel(false)}>Voltar</button>         
+                        <button className="ui inverted button" onClick={() => this._handleAdd_Panel(false)}>Voltar</button>         
 
                     </div>
                 </div>
@@ -211,26 +211,26 @@ class App extends React.Component {
         const arr = movies
         return (
             <div id="page">
-                <div class="ui small image" style={{justifyContent:'center', alignItems:'center', width:'100%', display:'flex', backgroundColor:'#000'}}>
+                <div className="ui small image" style={{justifyContent:'center', alignItems:'center', width:'100%', display:'flex', backgroundColor:'#000'}}>
                     <img src={require('./img/logo.png')} style={{height:'50px', margin:10}}/>
                 </div>               
                 
 
                 <div style={{padding:5, margin:0, backgroundColor:'#000', zIndex:1}} id="sticky">
-                    <div class="ui inverted secondary menu">                
+                    <div className="ui inverted secondary menu">                
 
-                        <a class="inverted item">
+                        <a className="inverted item">
                             Home
                         </a>
 
-                        <div class="right menu">
-                            <div class="item">
-                                <div class="ui inverted transparent left icon input">
+                        <div className="right menu">
+                            <div className="item">
+                                <div className="ui inverted transparent left icon input">
                                     <input type="text" placeholder="Search..."/>
-                                    <i class="search link icon"></i>
+                                    <i className="search link icon"></i>
                                 </div>
                             </div>
-                            <a class="ui item" onClick={() => this._handleLogin_Panel(true)}>
+                            <a className="ui item" onClick={() => this._handleLogin_Panel(true)}>
                             Log In
                             </a>
                         </div>
@@ -246,8 +246,8 @@ class App extends React.Component {
                             <h2>New Releases</h2>
                         </div>
 
-                        <div class="features ui grid noMargin" id="horizontalContent">
-                            <div class="sixteen wide column">
+                        <div className="features ui grid noMargin" id="horizontalContent">
+                            <div className="sixteen wide column">
                                 <div style={{display:'flex', overflowX:'scroll', padding:15, margin:10, height:'260px'}}>
                                 {
                                     arr.map((item, index) => {
@@ -264,15 +264,15 @@ class App extends React.Component {
                             <h2>Highlights</h2>
                         </div>
 
-                        <div class="ui stackable grid" style={{padding:'10px'}}>
+                        <div className="ui stackable grid" style={{padding:'10px'}}>
 
-                            <div class="row">
-                                <div class="three wide column">
+                            <div className="row">
+                                <div className="three wide column">
                                     <div>
                                         <div style={{height:'230px', width:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${movies[3].Poster})`, backgroundSize:'cover'}}/> 
                                     </div>
                                 </div>
-                                <div class="five wide column">
+                                <div className="five wide column">
                                     <div>
                                         <h3>{movies[3].Title.toUpperCase()}</h3>
                                         <h5>{movies[3].Genre}</h5>
@@ -280,12 +280,12 @@ class App extends React.Component {
                                     </div>
                                 </div>
 
-                                <div class="three wide column">
+                                <div className="three wide column">
                                     <div>
                                         <div style={{height:'230px', width:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${movies[4].Poster})`, backgroundSize:'cover'}}/> 
                                     </div>
                                 </div>
-                                <div class="five wide column">
+                                <div className="five wide column">
                                     <div>
                                         <h3>{movies[4].Title.toUpperCase()}</h3>
                                         <h5>{movies[4].Genre}</h5>
@@ -300,8 +300,8 @@ class App extends React.Component {
                             <h2>Your List</h2>
                         </div>
 
-                        <div class="features ui grid noMargin" id="horizontalContent">
-                            <div class="sixteen wide column">
+                        <div className="features ui grid noMargin" id="horizontalContent">
+                            <div className="sixteen wide column">
 
                                 <div style={{display:'flex', overflowX:'scroll', padding:15, margin:10, height:'260px'}}>
 
