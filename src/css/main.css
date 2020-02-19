@@ -2,11 +2,30 @@
     align-self: center;    
 }
 
-h2, h3, a, input {
+h2, a, input {
     font-family: 'Abel', sans-serif;
 }
 
-h6 {
+h3{
+    font-family: 'Abel', sans-serif;
+    margin: 10px;
+}
+
+h5, h6 {
     font-family: 'Abel', sans-serif;
     color: #ffae00;
+}
+
+#mainPage{
+    background-color: #eee;
+    max-width: 1000px;
+
+    margin: auto;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#horizontalContent{
+    overflow-y:auto;white-space:nowrap;
 }
