@@ -4,13 +4,10 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.0",
-    "convert-units": "^2.3.4",
-    "pure-react-carousel": "^1.25.2",
+    "express": "^4.17.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-scripts": "^3.4.0",
-    "reactstrap": "^8.4.1",
-    "socket.io": "^2.3.0"
+    "react-scripts": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
