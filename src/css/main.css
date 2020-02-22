@@ -82,9 +82,18 @@ h5, h6 {
     position: fixed;
 
     width: 95%;
-    max-width: 600px;
-    max-height: 800px;
-    border-radius: 15px;    
+    max-width: 630px;
+    max-height: 750px;
+    border-radius: 15px;
+    
+}
+
+#detailsScrollable{
+    display: flex;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column;
 }
 
 #loginInput{
@@ -97,6 +106,14 @@ h5, h6 {
     margin-bottom: 10px;
 }
 
+#mainInput{
+    background-color: #444;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-right: 10;
+}
+
 #orangeButton{
     border-color: cadetblue;
 }
@@ -107,4 +124,11 @@ form{
     align-items: center;
     flex-direction: column;
     width: 90%;
+}
+
+#add_extra{
+    display: flex;
+    width: 100%;
+
+    margin-bottom: 20px;
 }

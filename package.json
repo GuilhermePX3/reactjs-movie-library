@@ -9,7 +9,9 @@
     "express": "^4.17.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-scripts": "^3.4.0"
+    "react-player": "^1.15.2",
+    "react-scripts": "^3.4.0",
+    "react-youtube-embed": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

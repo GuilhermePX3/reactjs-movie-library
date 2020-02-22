@@ -40,7 +40,7 @@ router.put('/:movieId', async (req, res) => {
 router.delete('/:movieId', async (req, res) => {
 
     try{
-        const movie = await Movie.findByIdAndRemove(req.params.movieId)
+        const movie = await Movie.findOneAndDelete(req.params.movieId)
 
         return res.send()       
 

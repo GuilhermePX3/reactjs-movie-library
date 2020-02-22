@@ -22,6 +22,7 @@ const MovieSchema = new mongoose.Schema({
     },
     Trailer:{
         type: String,
+        default: 'none',
     },
     user:{
         type: String,

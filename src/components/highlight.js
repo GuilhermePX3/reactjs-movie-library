@@ -16,7 +16,7 @@ export default class Highlight extends Component {
                     <div>
                         <h3>{this.props.movie.Title.toUpperCase()}</h3>
                         <h5>{this.props.movie.Genre}</h5>
-                            <h4>{this.props.movie.Plot}</h4> 
+                        <h4>{this.props.movie.Plot}</h4> 
                     </div>
                 </div>  
             </>
