@@ -393,7 +393,9 @@ class App extends React.Component {
                                     {
                                     this.state.moviesArray.map((item, index) => {
                                         return(
-                                            <div onPointerDown={() => this._details(true, index)} style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${item.Poster})`, backgroundSize:'cover'}}/>
+                                            <div id="itemMovie" style={{backgroundImage:`url(${item.Poster})`}}>
+                                                <img onClick={() => this._details(true, index)} style={{maxHeight:'25%', filter:'invert(100%)'}} src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Info_sign_font_awesome.svg/512px-Info_sign_font_awesome.svg.png'/>
+                                            </div>
                                         )
                                     })
                                     }
