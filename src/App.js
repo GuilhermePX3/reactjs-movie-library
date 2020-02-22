@@ -298,7 +298,7 @@ class App extends React.Component {
                     <div className="ui inverted secondary menu">                
 
                         <a className="inverted item" href="/#userlist">
-                            {this.state.user === undefined ? 'Home' : 'Welcome, ' + this.state.user.name}
+                            {this.state.user === undefined ? 'Home' : this.state.user.name}
                         </a>
 
                         <div className="right menu">
