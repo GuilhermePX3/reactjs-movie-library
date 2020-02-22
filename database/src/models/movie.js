@@ -1,31 +1,30 @@
 const mongoose = require('../database')
 
-Schema = mongoose.Schema
-
 /**Estrutura de dados de usuario */
-const MovieSchema = new Schema({
-    title: {
-        type: String,
-        unique: true,
-    },
-    genre: {
-        type: String,      
-    },
-    release_date: {
+const MovieSchema = new mongoose.Schema({
+    Title: {
         type: String,
     },
-    main_actors:{
+    Genre: {
+        type: String,       
+    },
+    Year: {
         type: String,
     },
-    plot:{
+    Actors:{
+        type: String,
+    },
+    Plot:{
         type: String,        
     },
-    trailer:{
+    Poster:{
+        type: String,
+    },
+    Trailer:{
         type: String,
     },
     user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
     },
 })
 

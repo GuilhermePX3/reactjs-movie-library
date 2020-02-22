@@ -1,6 +1,6 @@
 const express = require('express')
 
-const Movie = require('../models/movie')
+const Movie = require('../models/Movie')
 
 const router = express.Router()
 
@@ -22,13 +22,13 @@ router.get('/:user', async (req, res) => {
 //CRIAR FILME COM DADOS INFORMADOS NO FRONT, COM BASE DA ID DO USUARIO
 router.post('/', async (req, res) => {
 
-    try{
+    try{ 
         const movie = await Movie.create(req.body)
 
-        res.send({  movie })       
+        res.send({ movie })       
 
     }catch (err){
-        return res.status(400).send({ error:'Error saving movie.' })
+        return res.status(400).send({ error:'Error saving movie.', err:err })
     }
 
 })

@@ -49,12 +49,20 @@ h5, h6 {
     font-family: 'Abel', sans-serif;
 }
 
-#loginPanel{
+#error {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color:#ff3333;
+    font-family: 'Abel', sans-serif;
+}
+
+#panel{
     background-color: #000;
     opacity: 0.85;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 25px;
 
     position: fixed;
     display: flex;
@@ -63,7 +71,20 @@ h5, h6 {
     max-width: 500px;
     max-height: 600px;
     border-radius: 15px;
-    padding: 25px 25px 25px 25px;
+    
+}
+
+#panelDetails{
+    background-color: #000;
+    opacity: 0.9;
+    padding: 25px;
+
+    position: fixed;
+
+    width: 95%;
+    max-width: 600px;
+    max-height: 800px;
+    border-radius: 15px;    
 }
 
 #loginInput{
@@ -78,4 +99,12 @@ h5, h6 {
 
 #orangeButton{
     border-color: cadetblue;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
 }

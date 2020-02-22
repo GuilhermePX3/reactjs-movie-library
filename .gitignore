@@ -1,3 +1,4 @@
 node_modules/
+.env
 front-end.code-workspace
 back-end.code-workspace

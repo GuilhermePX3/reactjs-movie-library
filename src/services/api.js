@@ -1,7 +1,8 @@
-import { create } from 'apisauce'
+var axios = require('axios');
 
-const api = create({
-    baseUrl: 'http://localhost:3030'
-})
+var api = axios.create({
+  baseURL: 'http://localhost:3030/',
+  /* other custom settings */
+});
 
-export default api
+module.exports = api;

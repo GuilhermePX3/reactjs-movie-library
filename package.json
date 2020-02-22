@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.0",
+    "apisauce": "^1.1.1",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
