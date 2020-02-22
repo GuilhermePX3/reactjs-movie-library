@@ -58,13 +58,13 @@ export default class EditPanel extends Component {
                         </div>
 
                         <div>
-                            <div class="ui vertical animated button" onPointerUp={() => this.props.returnDetails(false)} tabindex="0">
+                            <div class="ui vertical animated button" onPointerDown={() => this.props.returnDetails(false)} tabindex="0">
                                 <div class="hidden content">Back</div>
                                 <div class="visible content">
                                     <i class="arrow left icon"></i>
                                 </div>
                             </div>
-                            <div class="ui vertical animated green button" tabindex="0" onPointerUp={() => this.apiUpdate()}>
+                            <div class="ui vertical animated green button" tabindex="0" onPointerDown={() => this.apiUpdate()}>
                                 <div class="hidden content">Edit</div>
                                 <div class="visible content">
                                     <i class="check circle outline icon"></i>

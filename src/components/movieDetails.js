@@ -112,13 +112,13 @@ export default class MovieDetails extends Component {
                             <div style={{display:'flex', justifyContent:'space-between', marginTop:"20px"}}>
 
                                 <div>
-                                    <div class="ui vertical inverted animated yellow button" onPointerUp={() => this.props.returnMain(false, 0)} tabindex="0">
+                                    <div class="ui vertical inverted animated yellow button" onPointerDown={() => this.props.returnMain(false, 0)} tabindex="0">
                                         <div class="hidden content">Back</div>
                                         <div class="visible content">
                                             <i class="arrow left icon"></i>
                                         </div>
                                     </div>
-                                    <div class="ui vertical inverted animated button" tabindex="0" onPointerUp={() => this.props.editMovie(true)}>
+                                    <div class="ui vertical inverted animated button" tabindex="0" onPointerDown={() => this.props.editMovie(true)}>
                                         <div class="hidden content">Edit</div>
                                         <div class="visible content">
                                             <i class="pencil alternate icon"></i>
@@ -126,7 +126,7 @@ export default class MovieDetails extends Component {
                                     </div>
                                 </div>
                                     
-                                <div class="ui vertical animated red button" tabindex="0" onPointerUp={() => {this.apiDelete()}}>
+                                <div class="ui vertical animated red button" tabindex="0" onPointerDown={() => {this.apiDelete()}}>
                                     <div class="hidden content">Remove</div>
                                     <div class="visible content">
                                         <i class="trash icon"></i>
