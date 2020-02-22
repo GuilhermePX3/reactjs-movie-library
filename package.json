@@ -10,8 +10,7 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-player": "^1.15.2",
-    "react-scripts": "^3.4.0",
-    "react-youtube-embed": "^1.0.3"
+    "react-scripts": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

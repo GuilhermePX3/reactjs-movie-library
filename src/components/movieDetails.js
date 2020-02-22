@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import YouTube from 'react-youtube-embed'
-
 import api from '../services/api'
 
 export default class MovieDetails extends Component {
@@ -19,7 +17,7 @@ export default class MovieDetails extends Component {
 
         console.log(this.props.movie.Trailer )
 
-        if(this.props.movie.Trailer != undefined || this.props.movie.Trailer === "none"){
+        if(this.props.movie.Trailer !== undefined || this.props.movie.Trailer === "none"){
             const link = "https://www.youtube.com/embed/" + this.props.movie.Trailer.split("?v=")[1]
             console.log(link)
 

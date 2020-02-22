@@ -21,7 +21,7 @@ export default class EditPanel extends Component {
     //Metodos de conexao com back end (axios)
     async apiUpdate(){
         try{ 
-            const newMovie = await api.put('/movie/' + this.props.movie._id, { 
+            await api.put('/movie/' + this.props.movie._id, { 
                 Title:this.title, 
                 Year:this.year, 
                 Trailer:this.trailer
