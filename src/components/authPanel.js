@@ -73,7 +73,7 @@ export default class AuthPanel extends Component {
 
                             <a id="error">{this.state.loginInfo}</a>
 
-                            <div onClick={this.apiLogin.bind(this)}>
+                            <div onPointerUp={this.apiLogin.bind(this)}>
                                 <button className="ui inverted yellow button">Login</button>
                             </div>
                         
@@ -98,8 +98,8 @@ export default class AuthPanel extends Component {
                             <a id="error">{this.state.registerInfo}</a>
 
                             <div>
-                                <button className="ui inverted yellow button" onClick={() => this.apiRegister()}>Register!</button>
-                                <button className="ui inverted button" onClick={() => this.props.hidePanel(false)}>Maybe Later</button>
+                                <button className="ui inverted yellow button" onPointerUp={() => this.apiRegister()}>Register!</button>
+                                <button className="ui inverted button" onPointerUp={() => this.props.hidePanel(false)}>Maybe Later</button>
                             </div>
                     
                     </div>
