@@ -12,4 +12,3 @@ require('./controllers/auth')(app)
 require('./controllers/moviesControll')(app)
 
 app.listen(3030)
-

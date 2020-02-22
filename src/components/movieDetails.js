@@ -10,9 +10,9 @@ export default class MovieDetails extends Component {
     }
 
     _youtubePlayer(){
-        if(this.props.movie === undefined || this.props.movie.Trailer === undefined || this.props.movie.Trailer === "none")
+        if(this.props.movie === undefined || this.props.movie.Trailer === undefined || this.props.movie.Trailer === "none" || this.props.movie.Trailer === null)
             return(
-                <h4>Invalid youtube trailer!</h4>
+                <h1>Invalid youtube trailer!</h1>
             )
 
         console.log(this.props.movie.Trailer )
@@ -66,19 +66,14 @@ export default class MovieDetails extends Component {
             
         }
     }
-
     
-
     render() {
 
         if(this.props.movie !== undefined){
             return (
                 <div id="dialogBackground">
                         <div id="panelDetails">
-
-
                             <div id="detailsScrollable">
-
                                 <div className="ui stackable grid" style={{maxWidth:'600px'}}> 
                                     <div className="five wide column" style={{marginBottom:20}}>
                                         <div>
@@ -100,15 +95,9 @@ export default class MovieDetails extends Component {
                                     {this._youtubePlayer(this.props.movie.Trailer)}
 
                                 </div>
-
                             </div>
 
-                            
-
-                            
-
                             <div style={{display:'flex', justifyContent:'space-between', marginTop:"20px"}}>
-
                                 <div>
                                     <div class="ui vertical inverted animated yellow button" onPointerDown={() => this.props.returnMain(false, 0)} tabindex="0">
                                         <div class="hidden content">Back</div>
@@ -130,15 +119,8 @@ export default class MovieDetails extends Component {
                                         <i class="trash icon"></i>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            
-                            
+                            </div>                          
                         </div>
-
-                        
-
                     </div>
 
             ); 

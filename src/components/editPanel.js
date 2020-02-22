@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import api from '../services/api'
 
-
-
 export default class EditPanel extends Component {
 
     title = ''
@@ -39,7 +37,6 @@ export default class EditPanel extends Component {
             
                 <div id="dialogBackground">
                     <div id="panel">
-
                         <h1 id="title">Edit Movie Details</h1>
                                        
                         <div className="ui inverted transparent left icon  input" id="loginInput">
@@ -70,8 +67,7 @@ export default class EditPanel extends Component {
                                     <i class="check circle outline icon"></i>
                                 </div>
                             </div>                        
-                        </div>
-                    
+                        </div>                    
                     </div>
                 </div> 
             

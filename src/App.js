@@ -13,7 +13,6 @@
  * 
  * Para iniciar a aplicacao back end (port 3030):
  * nodemon database/src/index.js
- * 
  */
 
 
@@ -75,7 +74,6 @@ class App extends React.Component {
     }
 
     //Metodos de conexao com back end (axios)
-
     async apiRetrieveUserMovies(){
         try{             
             const response = await api.get('/movie/' + this.state.user._id)
@@ -268,9 +266,7 @@ class App extends React.Component {
                                 <i class="plus icon"></i>
                             </div>
                         </div>                        
-                    </div>
-
-                    
+                    </div>                    
                 </>
             )
         }else{
@@ -394,7 +390,7 @@ class App extends React.Component {
                                     this.state.moviesArray.map((item, index) => {
                                         return(
                                             <div id="itemMovie" style={{backgroundImage:`url(${item.Poster})`}}>
-                                                <img onClick={() => this._details(true, index)} style={{maxHeight:'25%', filter:'invert(100%)'}} src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Info_sign_font_awesome.svg/512px-Info_sign_font_awesome.svg.png'/>
+                                                <img onClick={() => this._details(true, index)} style={{maxHeight:'40%'}} src={require('./img/info_outlined.png')}/>
                                             </div>
                                         )
                                     })
@@ -405,7 +401,6 @@ class App extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 {this._loginPanel()}
