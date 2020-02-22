@@ -381,7 +381,7 @@ class App extends React.Component {
                         <div className="features ui grid noMargin" id="horizontalContent">
                             <div className="sixteen wide column">
 
-                                <div style={{display:'flex', overflowX:'scroll', padding:15, margin:10, height:'260px'}}>
+                                <div style={{display:'flex', overflowX:'scroll', overflowY:'hidden', padding:15, margin:10, height:'260px'}}>
 
                                     <div style={{height:'100%', minWidth:'150px', backgroundColor:this.state.addBtnColor, borderRadius:'5px', marginRight:10}} onPointerDown={() => {this._handleAddButton(true); this._handleAdd_Panel(true)}} onPointerUp={e => this._handleAddButton(false)}>
                                         <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100%', flexDirection:'column'}}>
