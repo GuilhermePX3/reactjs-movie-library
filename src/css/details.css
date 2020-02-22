@@ -2,23 +2,28 @@
     font-size: 20px;
     color:#fff;
     margin-top: 0px;
+    font-family: 'Ubuntu';
+    
 }
 
 #det-genre{
     font-size: 12px;
-    color:#fff;
+    color:#ffae00;
     margin-top: 0px;
     margin-bottom: 5px;
+    font-family: 'Abel', sans-serif;
 }
 
 #det-actors{
     font-size: 12px;
-    color:#fff;
+    color:#ffae00;
     margin-top: 0px;
+    font-family: 'Abel', sans-serif;
 }
 
 #det-plot{
     font-size: 15px;
-    color:#fff;
+    color:#ddd;
     margin-top: 0px;
+    font-family: 'muli', sans-serif;
 }

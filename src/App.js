@@ -1,8 +1,26 @@
+/**
+ * Projeto Movie Lib
+ * 
+ * obs:
+ * Para evitar problemas com o design e event triggers
+ * no mobile, em alguns casos optei por usar onPointerDown 
+ * ao inves de onClick.
+ * 
+ * Para iniciar a aplicacao front end (port 3000): 
+ * 
+ * cd [root-folder]
+ * npm start
+ * 
+ * Para iniciar a aplicacao back end (port 3030):
+ * nodemon database/src/index.js
+ * 
+ */
+
+
 import React from 'react'
 
 import './css/main.css'
 import './css/fonts.css'
-import './css/header.css'
 import './css/details.css'
 
 import Highlight from './components/highlight'
@@ -11,10 +29,6 @@ import EditPanel from './components/editPanel'
 import MovieDetails from './components/movieDetails'
 
 import api from './services/api'
-
-//#region DB
-
-////#endregion
 
 //classe que armazena dados de demonstracao
 const movies = require('./data/showroom.json')
@@ -197,7 +211,7 @@ class App extends React.Component {
                                 <i style={{marginLeft:'10px'}} className="search link icon"></i>
                             </div>
 
-                            <div class="ui vertical animated yellow button" tabindex="0" onClick={() => this._searchTool()}>
+                            <div class="ui vertical animated yellow button" tabindex="0" onPointerDown={() => this._searchTool()}>
                                 <div class="hidden content">Search</div>
                                 <div class="visible content">
                                     <i class="search icon"></i>
@@ -210,7 +224,7 @@ class App extends React.Component {
                         {this._movieSearchResult()}
 
                              
-                        <div class="ui vertical animated button" style={{width:"120px"}} tabindex="0" onClick={() => this._handleAdd_Panel(false)}>
+                        <div class="ui vertical animated button" style={{width:"120px"}} tabindex="0" onPointerDown={() => this._handleAdd_Panel(false)}>
                             <div class="hidden content">Back</div>
                             <div class="visible content">
                                 <i class="left arrow icon"></i>
@@ -248,7 +262,7 @@ class App extends React.Component {
                             <i style={{marginLeft:'10px'}} className="film link icon"></i>
                         </div>
 
-                        <div class="ui vertical animated green button" style={{width:"120px"}} tabindex="0" onClick={() => this._addResultToArray()}>
+                        <div class="ui vertical animated green button" style={{width:"120px"}} tabindex="0" onPointerDown={() => this._addResultToArray()}>
                             <div class="hidden content">Add movie</div>
                             <div class="visible content">
                                 <i class="plus icon"></i>
@@ -310,7 +324,7 @@ class App extends React.Component {
                                 </div>
                             </div>
 
-                            <a className="ui item" onClick={() => this._handleLogin_Panel(true)}>
+                            <a className="ui item" onPointerDown={() => this._handleLogin_Panel(true)}>
                             {this.state.user === undefined ? 'Log In' : 'Log Out'}
 
                             </a>
@@ -379,7 +393,7 @@ class App extends React.Component {
                                     {
                                     this.state.moviesArray.map((item, index) => {
                                         return(
-                                            <div onClick={() => this._details(true, index)} style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${item.Poster})`, backgroundSize:'cover'}}/>
+                                            <div onPointerDown={() => this._details(true, index)} style={{height:'100%', minWidth:'150px', backgroundColor:'#fff', borderRadius:'5px', marginRight:10, backgroundImage:`url(${item.Poster})`, backgroundSize:'cover'}}/>
                                         )
                                     })
                                     }
