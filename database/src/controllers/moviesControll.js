@@ -34,13 +34,24 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:movieId', async (req, res) => {
-    res.send({ user: req.userId })
+    try{ 
+        const movie = await Movie.findByIdAndUpdate(req.params.movieId, {
+            Title:req.body.Title,
+            Year:req.body.Year,
+            Trailer:req.body.Trailer
+        }, {new:true})
+
+        res.send({ movie })       
+
+    }catch (err){
+        return res.status(400).send({ error:'Error saving movie.', err:err })
+    }
 })
 
 router.delete('/:movieId', async (req, res) => {
 
     try{
-        const movie = await Movie.findOneAndDelete(req.params.movieId)
+        const movie = await Movie.findByIdAndDelete(req.params.movieId)
 
         return res.send()       
 

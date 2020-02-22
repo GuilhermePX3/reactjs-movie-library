@@ -7,6 +7,7 @@ import './css/details.css'
 
 import Highlight from './components/highlight'
 import AuthPanel from './components/authPanel'
+import EditPanel from './components/editPanel'
 import MovieDetails from './components/movieDetails'
 
 import api from './services/api'
@@ -29,16 +30,19 @@ class App extends React.Component {
             moviesArray:[],
             moviesSearch:undefined,
             selectedMovie:undefined,
-            showDetails:false,
             
             //Utils - auxiliares de efeitos
             addBtnColor:'#44444420',
             blur:0,
             
             //Booleans para paineis overlay
+            overlayIndex:0,
+
             activeLoginPanel:false,
             activeSearchPanel:false,
-            
+            showDetails:false,
+            showUpdate:false,
+
             //textos de inputs
             searchText:'none',
             addMovieTrailer:undefined,
@@ -61,7 +65,7 @@ class App extends React.Component {
     async apiRetrieveUserMovies(){
         try{             
             const response = await api.get('/movie/' + this.state.user._id)
-            this.setState({moviesArray:response.data.movie})
+            this.setState({moviesArray:response.data.movie, selectedMovie:undefined})
         }catch (e){
             console.log(e.response)
         }
@@ -78,6 +82,14 @@ class App extends React.Component {
 
     _details(show, index){
         this.setState({showDetails:show, selectedMovie:show ? this.state.moviesArray[index] : undefined, blur:show ? 5 : 0})
+    }
+
+    _update(show){        
+        this.setState({showDetails:false, showUpdate:show, blur:show ? 5 : 0})
+
+        if (!show){
+            this.apiRetrieveUserMovies()
+        }
     }
 
     _loginAction(user){
@@ -195,7 +207,7 @@ class App extends React.Component {
 
                         
                        
-                            {this._movieSearchResult()}
+                        {this._movieSearchResult()}
 
                              
                         <div class="ui vertical animated button" style={{width:"120px"}} tabindex="0" onClick={() => this._handleAdd_Panel(false)}>
@@ -259,12 +271,20 @@ class App extends React.Component {
     }
 
     _movieDetails(){
-        if(this.state.selectedMovie !== undefined){
+        if(this.state.selectedMovie !== undefined && this.state.showDetails){
             return(
-                <MovieDetails movie={this.state.selectedMovie} returnMain={this._details.bind(this)} reloadMovies={this.apiRetrieveUserMovies.bind(this)}/>
+                <MovieDetails movie={this.state.selectedMovie} returnMain={this._details.bind(this)} reloadMovies={this.apiRetrieveUserMovies.bind(this)} editMovie={this._update.bind(this)}/>
             )
         }
     }   
+
+    _movieUpdate(){
+        if(this.state.showUpdate){
+            return(
+                <EditPanel movie={this.state.selectedMovie} returnDetails={this._update.bind(this)}/>
+            )
+        }
+    } 
 
     render() {
         return (
@@ -377,6 +397,8 @@ class App extends React.Component {
                 {this._movieSearchPanel()}
 
                 {this._movieDetails()}
+
+                {this._movieUpdate()}
                 
             </div>
                 
