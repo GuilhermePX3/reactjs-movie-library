@@ -319,8 +319,8 @@ class App extends React.Component {
                                     <i className="search link icon"></i>
                                 </div>
                             </div>
-
-                            <a className="ui item" onPointerDown={() => this._handleLogin_Panel(true)}>
+                            
+                            <a className="ui item" href="/#" onPointerDown={() => this._handleLogin_Panel(true)}>
                             {this.state.user === undefined ? 'Log In' : 'Log Out'}
 
                             </a>
@@ -390,7 +390,7 @@ class App extends React.Component {
                                     this.state.moviesArray.map((item, index) => {
                                         return(
                                             <div id="itemMovie" style={{backgroundImage:`url(${item.Poster})`}}>
-                                                <img onClick={() => this._details(true, index)} style={{maxHeight:'40%'}} src={require('./img/info_outlined.png')}/>
+                                                <img href="/#" onClick={() => this._details(true, index)} style={{maxHeight:'40%'}} src={require('./img/info_outlined.png')} alt={imgAlt}/>
                                             </div>
                                         )
                                     })

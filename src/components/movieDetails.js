@@ -32,6 +32,7 @@ export default class MovieDetails extends Component {
                     }}
                     >
                     <iframe
+                    title='Youtube Trailer'
                     style={{
                     position: "absolute",
                     top: 0,

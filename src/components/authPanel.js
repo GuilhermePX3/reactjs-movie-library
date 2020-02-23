@@ -65,7 +65,7 @@ export default class AuthPanel extends Component {
                             <i style={{marginLeft:'10px'}} className="lock link icon"></i>
                         </div>
 
-                        <a id="error">{this.state.loginInfo}</a>
+                        <a href="/#" id="error">{this.state.loginInfo}</a>
 
                         <div onPointerDown={this.apiLogin.bind(this)}>
                             <button className="ui inverted yellow button">Login</button>
@@ -89,7 +89,7 @@ export default class AuthPanel extends Component {
                             <i style={{marginLeft:'10px'}} className="lock link icon"></i>
                         </div>
 
-                        <a id="error">{this.state.registerInfo}</a>
+                        <a href="/#" id="error">{this.state.registerInfo}</a>
 
                         <div>
                             <button className="ui inverted yellow button" onPointerDown={() => this.apiRegister()}>Register!</button>
