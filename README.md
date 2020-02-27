@@ -1,8 +1,15 @@
+27/02 - UPDATED APP HOSTING FOR TEST
+
+167.114.26.108 on port 3000 is no longer avaible, I made this for improving optimization, deploying the application using SERVE.
+now the application is fully available for mobile/desktop direct performance and present purposes at 167.114.26.108:5000 (at 5000 port)
+
+What make me create a build its because of some econnreset error that was occurring on the project after executing the page out of the production mode.
+
 Project completion:
 
 Some things present on application are demonstrative with no functions ("New Releases" and "Highlights"), for design purposes. The part of page destinated to test revision, is the last one called "Your List", where will communicate with back end functions.
 
-You can run the application from test server anywhere using browser. IP: 167.114.26.108:3000.
+You can run the application from test server anywhere using browser. IP: 167.114.26.108:xxxx.
 
 Instructions to run:
 
